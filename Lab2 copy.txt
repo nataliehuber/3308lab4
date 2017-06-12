@@ -1,3 +1,4 @@
+editing this file for Lab4 yoooooo
 diff Command:
 1. Fruits removed: Cranberries, Nectarine, Prickly Pear
    Fruits added: Jackfruit
@@ -5,7 +6,7 @@ diff Command:
 file passed. 
 3. It assigns a symbol for each file (either * or -) and then lists context around where the differences exist, 
 denoted by either a '+' where text is added or '-' where text has been removed.
-
+ 
 wc Command: 
 1.wc -l testPasswd.txt
  15 lines
