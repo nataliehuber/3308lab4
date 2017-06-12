@@ -1,0 +1,64 @@
+diff Command:
+1. Fruits removed: Cranberries, Nectarine, Prickly Pear
+   Fruits added: Jackfruit
+2. '>' means the difference exists in the second file passed, and '<' means the differences exists in the first 
+file passed. 
+3. It assigns a symbol for each file (either * or -) and then lists context around where the differences exist, 
+denoted by either a '+' where text is added or '-' where text has been removed.
+
+wc Command: 
+1.wc -l testPasswd.txt
+ 15 lines
+2.wc -c testPasswd.txt
+ 692 characters
+
+cut Command:
+1.cut -f 1 -d ':' testPasswd.txt
+2.cut -f 2,4 -d ' ' grades.txt
+
+Using pipes:
+1. cut -f 4 -d ':' testPasswd.txt | sort -n | uniq
+ 0
+ 1
+ 2
+ 3
+ 5
+ 99
+ 999
+ 1000
+ 1337
+2. cut -f 4 -d ':' testPasswd.txt | sort -n | uniq > labs2.txt
+3. cut -f 1,6 -d ':' testPasswd.txt | egrep '^[m\w\s]'
+ sys:/dev
+ mail:/var/mail
+ www-data:/var/www
+ syslog:/home/syslog
+ whoopsie:/nonexistent
+ sshd:/var/run/sshd
+ mysql:/nonexistent
+
+sed Command:
+1. sed 's/[a-z]//g' leetSpeak.txt 
+   sed 's/[0-9]//g' leetSpeak.txt 
+   sed 's/[0-9]/_/g' leetSpeak.txt
+2. sed 's/4/a/g' leetSpeak.txt | sed 's/5/s/g' | sed 's/0/o/g' | sed 's/7/t/g' | sed 's/3/e/g'
+echo
+   You could also do this by using sed on individual lines and save eachtime into an output file. 
+3. We could do it passing sed '$1' instead of a filename and having the user put in the filename on the command
+line. 
+
+awk Command:
+1. awk '{ print $1, $2,  ((($3 + $4 + $5 + $6 + $7)/5) *100)  }' grades.txt
+2. awk '{tot += $3; n =7;} END {print tot/n;}' grades.txt
+
+more practice with Regular Expressions:
+1. grep '[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]\>' regex_practice_data.txt | wc -l
+	17706
+2. grep '[3][0][3]-[4][4][1]-[0-9][0-9][0-9][0-9]\>' regex_practice_data.txt | wc -l
+	51
+3. grep '@' regex_practice_data.txt | wc -l
+	17706
+4. grep '.gov' regex_practice_data.txt | wc -l
+	58
+5. egrep -i '^[a-m][a-z]*\.[a-z]+@' regex_practice_data.txt | wc -l
+	334
